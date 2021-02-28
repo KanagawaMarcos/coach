@@ -45,6 +45,7 @@ let pRep =
     choice [
         stringReturn "treadmill" { Exercise=Walk; Equipement=Treadmill; }
         stringReturn "walk"  { Exercise=Walk; Equipement= None; }
+        // stringReturn "walk"  { Exercise=Walk; Equipement= None; Load=?? }
     ]
 
 let workout input =
@@ -60,7 +61,11 @@ workout "treadmill"
 [<Fact>]
 let ``walk`` () =
     let expected = { Exercise= Walk; Equipement= None }
-    let actual = workout "walk"
+    let actual = 
+        match workout "walk" with
+        | Result<_,res> -> res
+        | Result<_,Error> -> Error
+        | _ -> ()
     
     Assert.Equal(expected, actual)
 
