@@ -1,5 +1,5 @@
 ﻿namespace parser
 
-module Say =
-    let hello name =
-        printfn "Hello %s" name
+[<EntryPoint>]
+let main _ = 
+    printfn "Hello World!"
