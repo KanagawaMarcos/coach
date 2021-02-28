@@ -38,4 +38,5 @@ let workout input =
         | Success(res, _, _) -> Result.Ok res
         | Failure(err, _, _) -> Result.Error err
 
-workout "Walks"
+workout "Walk"
+workout "Treadmill"
