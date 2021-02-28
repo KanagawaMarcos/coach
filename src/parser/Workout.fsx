@@ -28,7 +28,7 @@ type Load =
 type Rep = {
     Exercise: Exercise;
     Equipment: Equipment;
-    //Load: Load;
+    // Load: Load;
 }
 
 type Amount = 
@@ -45,7 +45,6 @@ let pRep =
     choice [
         stringReturn "treadmill" { Exercise=Walk; Equipment=Treadmill; }
         stringReturn "walk"  { Exercise=Walk; Equipment= None; }
-        // stringReturn "walk"  { Exercise=Walk; Equipment= None; Load=?? }
     ]
 
 let workout input =
