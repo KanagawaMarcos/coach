@@ -24,17 +24,28 @@ type Load =
 type Rep = {
     Exercise: Exercise;
     Equipement: Equipement;
-    //Load: Load; 
+    //Load: Load;
 }
 
-let pexercise =
+type Amount = 
+    | Int
+    | TillFailure
+
+type Set = {
+    Rep: Rep;
+    Amount: Amount;
+}
+
+let pRep =
     choice [
         stringReturn "Treadmill" { Exercise=Walk; Equipement=Treadmill; }
         stringReturn "Walk"  { Exercise=Walk; Equipement= None; }
     ]
 
+
+
 let workout input =
-    match run pexercise input with
+    match run pRep input with
         | Success(res, _, _) -> Result.Ok res
         | Failure(err, _, _) -> Result.Error err
 
