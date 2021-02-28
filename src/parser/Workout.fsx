@@ -15,7 +15,7 @@ type Exercise =
     | Pulley
     | Walk
 
-type Equipement = 
+type Equipment = 
     | Smith
     | Cross
     | Treadmill
@@ -27,7 +27,7 @@ type Load =
 
 type Rep = {
     Exercise: Exercise;
-    Equipement: Equipement;
+    Equipment: Equipment;
     //Load: Load;
 }
 
@@ -43,9 +43,9 @@ type Set = {
 // =================== Logic ===================
 let pRep =
     choice [
-        stringReturn "treadmill" { Exercise=Walk; Equipement=Treadmill; }
-        stringReturn "walk"  { Exercise=Walk; Equipement= None; }
-        // stringReturn "walk"  { Exercise=Walk; Equipement= None; Load=?? }
+        stringReturn "treadmill" { Exercise=Walk; Equipment=Treadmill; }
+        stringReturn "walk"  { Exercise=Walk; Equipment= None; }
+        // stringReturn "walk"  { Exercise=Walk; Equipment= None; Load=?? }
     ]
 
 let workout input =
@@ -59,13 +59,13 @@ workout "treadmill"
 // =================== Specification ===================
 
 [<Fact>]
-let ``valid syntax: walk`` () =
-    let expected = { Exercise= Walk; Equipement= None }
+let ``Syntax: walk -> ( Exercise: Walk,  Equipment: None)`` () =
+    let expected = { Exercise= Walk; Equipment= None }
     let actual = 
         match workout "walk" with 
             | Result.Ok(res) -> res
             | Result.Error(errorValue) -> failwith errorValue
-    
     Assert.Equal(expected, actual)
 
-``valid syntax: walk``()
+``Syntax: walk -> ( Exercise: Walk,  Equipment: None)``()
+``valid syntax: t``()
