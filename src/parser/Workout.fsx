@@ -19,4 +19,4 @@ let workout input =
         | Success(res, _, _) -> Result.Ok res
         | Failure(err, _, _) -> Result.Error err
 
-workout "treadmill" |> printf "%O"
+workout "Treadmill"
