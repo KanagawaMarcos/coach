@@ -67,5 +67,14 @@ let ``Syntax: walk -> ( Exercise: Walk,  Equipment: None)`` () =
             | Result.Error(errorValue) -> failwith errorValue
     Assert.Equal(expected, actual)
 
+[<Fact>]
+let ``Syntax: treadmill -> ( Exercise: Walk,  Equipment: Treadmill)`` () =
+    let expected = { Exercise= Walk; Equipment= Treadmill }
+    let actual = 
+        match workout "treadmill" with 
+            | Result.Ok(res) -> res
+            | Result.Error(errorValue) -> failwith errorValue
+    Assert.Equal(expected, actual)
+
 ``Syntax: walk -> ( Exercise: Walk,  Equipment: None)``()
-``valid syntax: t``()
+``Syntax: treadmill -> ( Exercise: Walk,  Equipment: Treadmill)``()
