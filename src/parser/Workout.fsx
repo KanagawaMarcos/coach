@@ -1,7 +1,11 @@
 ﻿#r "nuget: FParsec, 1.1.1"
+#r "nuget: xunit, 2.4.1"
 
 open FParsec
+open System
+open Xunit
 
+// =================== Domain ===================
 [<Measure>] type kg // kilogram
 [<Measure>] type m  // meter
 [<Measure>] type s  // second
@@ -36,6 +40,7 @@ type Set = {
     Amount: Amount;
 }
 
+// =================== Logic ===================
 let pRep =
     choice [
         stringReturn "Treadmill" { Exercise=Walk; Equipement=Treadmill; }
@@ -47,5 +52,10 @@ let workout input =
         | Success(res, _, _) -> Result.Ok res
         | Failure(err, _, _) -> Result.Error err
 
+// =================== Tests ===================
 workout "Walk"
 workout "Treadmill"
+
+[<Fact>]
+let ``My test`` () =
+    Assert.True(true)
