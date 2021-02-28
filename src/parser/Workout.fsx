@@ -69,4 +69,4 @@ let ``walk`` () =
     
     Assert.Equal(expected, actual)
 
-``Full Workout Session``()
+``walk``()
