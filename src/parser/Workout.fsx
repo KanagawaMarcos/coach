@@ -43,8 +43,8 @@ type Set = {
 // =================== Logic ===================
 let pRep =
     choice [
-        stringReturn "Treadmill" { Exercise=Walk; Equipement=Treadmill; }
-        stringReturn "Walk"  { Exercise=Walk; Equipement= None; }
+        stringReturn "treadmill" { Exercise=Walk; Equipement=Treadmill; }
+        stringReturn "walk"  { Exercise=Walk; Equipement= None; }
     ]
 
 let workout input =
@@ -52,10 +52,16 @@ let workout input =
         | Success(res, _, _) -> Result.Ok res
         | Failure(err, _, _) -> Result.Error err
 
-// =================== Tests ===================
-workout "Walk"
-workout "Treadmill"
+workout "walk"
+workout "treadmill"
+
+// =================== Specification ===================
 
 [<Fact>]
-let ``My test`` () =
-    Assert.True(true)
+let ``walk`` () =
+    let expected = { Exercise= Walk; Equipement= None }
+    let actual = workout "walk"
+    
+    Assert.Equal(expected, actual)
+
+``Full Workout Session``()
