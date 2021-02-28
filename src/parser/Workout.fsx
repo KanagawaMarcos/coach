@@ -59,14 +59,13 @@ workout "treadmill"
 // =================== Specification ===================
 
 [<Fact>]
-let ``walk`` () =
+let ``valid syntax: walk`` () =
     let expected = { Exercise= Walk; Equipement= None }
     let actual = 
-        match workout "walk" with
-        | Result<_,res> -> res
-        | Result<_,Error> -> Error
-        | _ -> ()
+        match workout "walk" with 
+            | Result.Ok(res) -> res
+            | Result.Error(errorValue) -> failwith errorValue
     
     Assert.Equal(expected, actual)
 
-``walk``()
+``valid syntax: walk``()
