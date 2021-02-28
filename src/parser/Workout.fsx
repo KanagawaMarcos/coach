@@ -2,9 +2,9 @@
 
 open FParsec
 
-[<Measure>] type kg
-[<Measure>] type meter
-[<Measure>] type second
+[<Measure>] type kg // kilogram
+[<Measure>] type m  // meter
+[<Measure>] type s  // second
 
 type Exercise = 
     | Curl
@@ -19,18 +19,18 @@ type Equipement =
 
 type Load = 
     | Weight of int<kg>
-    | Speed of int<meter/second>
+    | Speed of int<m/s>
 
 type Rep = {
     Exercise: Exercise;
     Equipement: Equipement;
-    Load: Load;
+    //Load: Load; 
 }
 
 let pworkout =
     choice [
-        stringReturn "Treadmill" { Exercise=Walk; Equipement=Treadmill; Load=3<meter/second> }
-        stringReturn "Walk"  { Exercise=Walk; Equipement= None }
+        stringReturn "Treadmill" { Exercise=Walk; Equipement=Treadmill; }
+        stringReturn "Walk"  { Exercise=Walk; Equipement= None; }
     ]
 
 let workout input =
