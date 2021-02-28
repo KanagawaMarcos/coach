@@ -42,8 +42,6 @@ let pRep =
         stringReturn "Walk"  { Exercise=Walk; Equipement= None; }
     ]
 
-
-
 let workout input =
     match run pRep input with
         | Success(res, _, _) -> Result.Ok res
